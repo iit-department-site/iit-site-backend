@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'djoser',
     'rest_framework_simplejwt',
     
-    'src.profiles',
+    'profiles',
 ]
 
 MIDDLEWARE = [
@@ -128,7 +128,7 @@ STATIC_URL = '/static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+#DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
@@ -138,10 +138,14 @@ REST_FRAMEWORK = {
         
     ),
 }
-
+SIMPLE_JWT ={
+    
+}
 
 
 
 SIMPLE_JWT = {
    #'AUTH_HEADER_TYPES': ('JWT',),
 }
+
+AUTH_USER_MODEL = 'profiles.UserNet'
