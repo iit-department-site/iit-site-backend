@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from rest_framework.generics import RetrieveAPIView
+from .models import UserNet
+from .serializers import GetUserNetSerializer 
 
-# Create your views here.
+
+class GetUserNetView(RetrieveAPIView):
+    '''out profile info'''
+    queryset = UserNet.objects.all()
+    serializer_class = GetUserNetSerializer
