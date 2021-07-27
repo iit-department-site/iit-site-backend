@@ -7,4 +7,29 @@ class GetUserNetSerializer(serializers.ModelSerializer):
     """
     class Meta:
         model = UserNet
-        exclude = ("password", "last_login", "is_active", "is_staff", "is_superuser")
+        exclude = (
+            "password", 
+            "last_login", 
+            "is_active", 
+            "is_staff", 
+            "is_superuser",
+            "groups",
+            "user_permissions"
+        )
+        
+
+class GetUserNetPublicSerializer(serializers.ModelSerializer):
+    """Output public info about user
+    """
+    class Meta:
+        model = UserNet
+        exclude = (
+            "email",
+            "password",
+            "last_login",
+            "is_active",
+            "is_staff",
+            "is_superuser",
+            "groups",
+            "user_permissions"
+        )
