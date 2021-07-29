@@ -1,4 +1,4 @@
-from ai_site.comment.models import AbstractComment
+from comment.models import AbstractComment
 from django.db import models
 from django.conf import settings
 from mptt.models import MPTTModel, TreeForeignKey
@@ -7,7 +7,7 @@ class  Post(models.Model):
     """Post model
     """
     text = models.TextField(max_length=1000)
-    created_date = models.DateTimeField(auto_now_add=True)
+    create_date = models.DateTimeField(auto_now_add=True)
     published = models.BooleanField(default=True)
     moderation = models.BooleanField(default=True)
     view_count = models.PositiveIntegerField(default=0)
