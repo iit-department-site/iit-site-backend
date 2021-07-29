@@ -34,3 +34,4 @@ class GetUserNetPublicSerializer(serializers.ModelSerializer):
             "groups",
             "user_permissions"
         )
+        
