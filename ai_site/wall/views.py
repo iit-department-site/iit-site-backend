@@ -1,3 +1,57 @@
-from django.shortcuts import render
+from rest_framework  import permissions, generics
 
-# Create your views here.
+from base.classes import CreateUpdateDestroy, CreateRetrieveUpdateDestroy
+from base.permissions import IsAuthor, IsMemberGroup, IsAuthorEntry, IsAuthorCommentEntry
+from .models import Post, Comment
+from .serializers import CreateCommentSerializers, PostSerilizer, ListPostSerializer
+
+
+
+class PostListView(generics.ListAPIView):
+    """Post list of user"""
+    
+    serializer_class = ListPostSerializer
+    
+    def get_queryset(self):
+        return Post.objects.filter(user_id=self.kwargs.get('pk'))
+
+
+
+
+
+
+class PostView(CreateUpdateDestroy):
+    """CRUD post"""
+    permissions_classes = [permissions.IsAuthenticatedOrReadOnly]
+    queryset = Comment.objects.all()
+    serializer_class = PostSerilizer
+    
+    permission_classes_by_action = {'update': [IsAuthor],
+                                    'destroy': [IsAuthor],
+                                    'get': [permissions.AllowAny]}
+    
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+        
+    def preform_destroy(self, instance):
+        instance.deleted = True
+        instance.save()
+        
+
+class CommentsView(CreateUpdateDestroy):
+    """Put comments to post"""
+    permissions_classes = [permissions.IsAuthenticatedOrReadOnly]
+    queryset = Comment.objects.all()
+    serializer_class = CreateCommentSerializers
+    
+    permission_classes_by_action = {'update': [IsAuthor],
+                                    'destroy': [IsAuthor]}
+    
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
+        
+    def preform_destroy(self, instance):
+        
+        instance.deleted = True
+        instance.save() #скрываем, но не удаляем
+        

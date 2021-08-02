@@ -3,6 +3,7 @@ from django.db import models
 from django.conf import settings
 from mptt.models import MPTTModel, TreeForeignKey
 # Create your models here.
+
 class  Post(models.Model):
     """Post model
     """
@@ -15,6 +16,9 @@ class  Post(models.Model):
     
     def __str__(self):
         return f'Post created by {self.user}'
+    
+    def comments_count(self):
+        return self.comment.count()
     
     
 
