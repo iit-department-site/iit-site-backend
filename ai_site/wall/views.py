@@ -20,15 +20,15 @@ class PostListView(generics.ListAPIView):
 
 
 
-class PostView(CreateUpdateDestroy):
+class PostView(CreateRetrieveUpdateDestroy):
     """CRUD post"""
     permissions_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Comment.objects.all()
+    queryset = Post.objects.all()
     serializer_class = PostSerilizer
     
-    permission_classes_by_action = {'update': [IsAuthor],
-                                    'destroy': [IsAuthor],
-                                    'get': [permissions.AllowAny]}
+    permission_classes_by_action = {'get': [permissions.AllowAny],
+                                    'update': [IsAuthor],
+                                    'destroy': [IsAuthor]}
     
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
@@ -48,7 +48,7 @@ class CommentsView(CreateUpdateDestroy):
                                     'destroy': [IsAuthor]}
     
     def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
+        serializer.save(user=self.request.user)
         
     def preform_destroy(self, instance):
         

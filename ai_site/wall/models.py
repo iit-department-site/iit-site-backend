@@ -18,7 +18,7 @@ class  Post(models.Model):
         return f'Post created by {self.user}'
     
     def comments_count(self):
-        return self.comment.count()
+        return self.comments.count()
     
     
 
