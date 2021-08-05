@@ -13,7 +13,7 @@ class UserNetPublicView(ModelViewSet):
     
     
 class UserNetView(ModelViewSet):
-    """ Вывод профиля пользователя
+    """ out private public user profile 
     """
     serializer_class = GetUserNetSerializer
     permission_classes = [permissions.IsAuthenticated]
