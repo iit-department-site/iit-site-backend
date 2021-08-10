@@ -12,4 +12,8 @@ or source mypython/bin/activate // linux
 
 5. cd ai_site
 
-6. python manage.py runserver
+6. python manage.py makemigrations 
+
+7. python manage.py migrate
+
+8. python manage.py runserver
