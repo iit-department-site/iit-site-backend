@@ -6,6 +6,7 @@ class GetUserNetSerializer(serializers.ModelSerializer):
     """Output info about user
     """
     avatar = serializers.ImageField(read_only=True)
+    
     class Meta:
         model = UserNet
         exclude = (
@@ -35,3 +36,13 @@ class GetUserNetPublicSerializer(serializers.ModelSerializer):
             "user_permissions"
         )
         
+        
+class UserByFollowerSerializer(serializers.ModelSerializer):
+    """ Output subscribers 
+    """
+    
+    avatar = serializers.ImageField(read_only=True)
+        
+    class Meta:
+        model = UserNet
+        fields = ('id', 'username', 'avatar')
