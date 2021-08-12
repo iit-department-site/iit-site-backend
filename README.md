@@ -5,7 +5,7 @@
 
 2. virtualenv venv 
 
-3. venv\Scripts\activate // Windows 
+3. .\venv\Scripts\activate // Windows 
 or source mypython/bin/activate // linux
 
 4. pip install -r requirements.txt
