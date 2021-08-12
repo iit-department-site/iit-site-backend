@@ -10,3 +10,10 @@ class ListFollowerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Follower
         fields = ('subscriber', )
+        
+        
+        
+class AddFollowerSerializer(serializers.Serializer):
+    """ add to followers"""
+    
+    pass
