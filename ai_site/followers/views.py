@@ -4,7 +4,7 @@ from followers.serializers import ListFollowerSerializer
 from django.shortcuts import render
 from rest_framework  import generics, permissions, views, response
 # Create your views here.
-class ListFollowerView(generics.ListView):
+class ListFollowerView(generics.ListAPIView):
     """output list of subscribers"""
     
     
