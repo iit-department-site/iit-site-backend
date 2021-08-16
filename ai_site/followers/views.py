@@ -16,7 +16,7 @@ class ListFollowerView(generics.ListAPIView):
         return Follower.objects.filter(user=self.request.user)
     
     
-class AddFollowerView(views.APIView):
+class FollowerView(views.APIView):
     
     permission_classes = [permissions.IsAuthenticated]
     
