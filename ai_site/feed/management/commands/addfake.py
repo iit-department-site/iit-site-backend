@@ -5,10 +5,12 @@ from wall.models import Post
 
 
 class Command(BaseCommand):
-    """ для запуска теста нужно в консоль  прописать python manage.py addfake"""
+    """ для запуска  нужно в консоль  прописать python manage.py addfake
+    """
+    
     def handle(self, *args, **kwargs):
         #self.create_user()
-        self.create_follower()
+        #self.create_follower()
         self.create_post()
         self.stdout.write("Successful")
     
@@ -36,6 +38,7 @@ class Command(BaseCommand):
     def create_post(self):
         user_list = UserNet.objects.all()
         for user in user_list:
-            Post.objects.create(text="Text post po po", user =user)
+            for i in range(10):
+                Post.objects.create(text="Text post po po", user =user)
             
             
