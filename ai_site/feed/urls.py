@@ -3,5 +3,5 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.FeedView.as_view({'get': 'list'}),)
+    path('', views.FeedView.as_view({'get': 'list'})),
 ]
