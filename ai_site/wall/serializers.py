@@ -33,6 +33,7 @@ class PostSerilizer(serializers.ModelSerializer):
     user = serializers.ReadOnlyField(source='user.username')
     comments = ListCommentSerializer(many=True, read_only=True)
     view_count = serializers.CharField(read_only=True)
+    
     class Meta:
         model = Post
         fields = ("id","create_date", "user", "text", "comments", "view_count" )
