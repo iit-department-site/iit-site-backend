@@ -29,6 +29,10 @@ docker-compose up -d --build
 ```
 docker-compose exec web python manage.py migrate --noinput
 ```
+Open in your browser
+```
+http://localhost:8008
+```
 
 ## Usage <a name = "usage"></a>
 
