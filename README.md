@@ -1,5 +1,4 @@
-
-# Ai site 
+# Dockerized Ai site 
 
 ## Table of Contents
 
@@ -9,35 +8,11 @@
 
 ## About <a name = "about"></a>
 
-This is backend part of AI site.
+This is Dockerized version of backend part of AI site.
 
 ## Getting Started <a name = "getting_started"></a>
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
-
-### Prerequisites
-
-What things you need to install the software and how to install them.
-First install virtual environment
-```
-pip install virtualenv
-```
-Creation of a virtual environment
-```
-virtualenv venv 
-```
-Activating the virtual environment
-```
-.\venv\Scripts\activate win
-```
-linux
-```
-source mypython/bin/activate 
-```
-installing dependencies
-```
-pip install -r requirements.txt
-```
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
 
 ### Installing
 
@@ -47,25 +22,20 @@ Say what the step will be
 ```
 cd ai_site
 ```
-To migrate the database
 ```
-python manage.py makemigrations 
+docker-compose up -d --build   
 ```
 ```
-python manage.py migrate
+docker-compose exec web python manage.py migrate --noinput
 ```
-To create a admin user:
-
+Open in your browser
 ```
-python manage.py createsuperuser
-```
-And to run the server:
-```
-python manage.py runserver
+http://localhost:8008
 ```
 
 ## Usage <a name = "usage"></a>
+
 Add notes about how to use the system:
 * Django
+* Docker
 * Postgres
-
