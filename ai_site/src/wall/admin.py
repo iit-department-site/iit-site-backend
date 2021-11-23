@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from mptt.admin import MPTTModelAdmin
 
-from wall.models import Comment, Post
+from src.wall.models import Comment, Post
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):

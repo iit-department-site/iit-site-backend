@@ -1,9 +1,9 @@
-
 from django.db import models
 from django.conf import settings
 from mptt.models import MPTTModel, TreeForeignKey
 
-from comment.models import AbstractComment
+from src.comment.models import AbstractComment
+
 
 class  Post(models.Model):
     """Post model
@@ -22,7 +22,6 @@ class  Post(models.Model):
         return self.comments.count()
     
     
-
 class Comment(AbstractComment, MPTTModel):
     """comment model to posts
     """
