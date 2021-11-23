@@ -46,11 +46,11 @@ INSTALLED_APPS = [
     'corsheaders',
     'mptt',
     
-    'profiles',
-    'wall',
-    'comment',
-    'followers',
-    'feed',
+    'src.profiles',
+    'src.wall',
+    'src.comment',
+    'src.followers',
+    'src.feed',
     
 ]
 
