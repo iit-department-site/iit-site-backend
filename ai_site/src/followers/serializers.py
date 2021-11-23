@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Follower
-from profiles.serializers import UserByFollowerSerializer
+from src.profiles.serializers import UserByFollowerSerializer
+
 
 class ListFollowerSerializer(serializers.ModelSerializer):
     
