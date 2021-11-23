@@ -14,7 +14,7 @@ class UserNet(AbstractUser):
     first_login = models.DateTimeField(null=True)
     phone = models.CharField(max_length=14)
     avatar = models.ImageField(upload_to='user/avatar/', blank=True, null=True)
-    bio = models.TextField(blank=True, null = True)
+    bio = models.TextField(blank=True, null=True)
     github = models.CharField(max_length=500, null=True, blank=True)
     birthday = models.DateField(blank=True, null=True)
     gender = models.CharField(max_length=6, choices=GENDER, default='male')
