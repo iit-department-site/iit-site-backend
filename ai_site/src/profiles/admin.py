@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .models import UserNet
 
+
 class UserNetAdmin(UserAdmin):
     list_display = ('username', 'email', 'phone', 'first_name', 'last_name', 'is_staff')
     fieldsets = (
@@ -18,4 +19,3 @@ class UserNetAdmin(UserAdmin):
 
 admin.site.register(UserNet, UserNetAdmin)
 # Register your models here.
-

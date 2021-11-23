@@ -2,11 +2,12 @@ from rest_framework import serializers
 
 from .models import UserNet
 
+
 class GetUserNetSerializer(serializers.ModelSerializer):
     """Output info about user
     """
     avatar = serializers.ImageField(read_only=True)
-    
+
     class Meta:
         model = UserNet
         exclude = (
@@ -18,11 +19,12 @@ class GetUserNetSerializer(serializers.ModelSerializer):
             "groups",
             "user_permissions"
         )
-        
+
 
 class GetUserNetPublicSerializer(serializers.ModelSerializer):
     """Output public info about user
     """
+
     class Meta:
         model = UserNet
         exclude = (
@@ -35,14 +37,14 @@ class GetUserNetPublicSerializer(serializers.ModelSerializer):
             "groups",
             "user_permissions"
         )
-        
-        
+
+
 class UserByFollowerSerializer(serializers.ModelSerializer):
     """ Output subscribers 
     """
-    
+
     avatar = serializers.ImageField(read_only=True)
-        
+
     class Meta:
         model = UserNet
         fields = ('id', 'username', 'avatar')
