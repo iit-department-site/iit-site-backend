@@ -1,9 +1,6 @@
-
-
-
 from rest_framework import permissions, viewsets, response
 
-from wall.serializers import ListPostSerializer, PostSerilizer
+from src.wall.serializers import ListPostSerializer, PostSerilizer
 
 
 from .services import feed_service

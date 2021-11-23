@@ -1,4 +1,4 @@
-from wall.models import Post
+from src.wall.models import Post
 
 
 class Feed:
