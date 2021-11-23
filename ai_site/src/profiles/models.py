@@ -1,23 +1,30 @@
+from django.core.validators import RegexValidator
 from django.db import models
 from django.contrib.auth.models import AbstractUser
- 
+
+from src.core.enums.profiles import Gender
+
 
 class UserNet(AbstractUser):
+    """Custom user model"""
 
-    GENDER = (
-        ('male', 'male'),
-        ('female', 'female')
-    )
-
-    '''Custom user model'''
     middle_name = models.CharField(max_length=50)
     first_login = models.DateTimeField(null=True)
-    phone = models.CharField(max_length=14)
+    phone = models.CharField(
+        max_length=40,
+        validators=(
+            RegexValidator(regex="^\+375(17|29|33|44)[0-9]{3}[0-9]{2}[0-9]{2}$"),
+        )
+    )
     avatar = models.ImageField(upload_to='user/avatar/', blank=True, null=True)
     bio = models.TextField(blank=True, null=True)
-    github = models.CharField(max_length=500, null=True, blank=True)
+    github = models.CharField(
+        max_length=500, null=True, blank=True,
+        validators=(
+            RegexValidator(regex='^(http(s?):\/\/)?(www\.)?github\.([a-z])+\/([A-Za-z0-9]{1,})+\/?$'),
+        ))
     birthday = models.DateField(blank=True, null=True)
-    gender = models.CharField(max_length=6, choices=GENDER, default='male')
+    gender = models.CharField(choices=Gender.choices(), default="MALE", max_length=7)
     technology = models.ManyToManyField('Technology', related_name='user')
 
 
