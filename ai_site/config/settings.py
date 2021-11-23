@@ -43,13 +43,13 @@ INSTALLED_APPS = [
     'drf_yasg',
     'corsheaders',
     'mptt',
-
-    'profiles',
-    'wall',
-    'comment',
-    'followers',
-    'feed',
-
+    
+    'src.profiles',
+    'src.wall',
+    'src.comment',
+    'src.followers',
+    'src.feed',
+    
 ]
 
 MIDDLEWARE = [

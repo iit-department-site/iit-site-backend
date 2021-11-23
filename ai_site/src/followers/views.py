@@ -1,6 +1,6 @@
-from followers.models import Follower
-from profiles.models import UserNet
-from followers.serializers import ListFollowerSerializer
+from src.followers.models import Follower
+from src.profiles.models import UserNet
+from src.followers.serializers import ListFollowerSerializer
 from django.shortcuts import render
 from rest_framework import generics, permissions, views, response
 
