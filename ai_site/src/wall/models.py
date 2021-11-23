@@ -5,7 +5,6 @@ from mptt.models import MPTTModel, TreeForeignKey
 from src.comment.models import AbstractComment
 
 
-
 class Post(models.Model):
     """Post model
     """

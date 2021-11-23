@@ -3,7 +3,6 @@ from django.contrib.auth.models import AbstractUser
  
 
 class UserNet(AbstractUser):
-    
 
     GENDER = (
         ('male', 'male'),
