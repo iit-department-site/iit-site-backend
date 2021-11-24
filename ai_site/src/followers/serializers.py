@@ -3,7 +3,6 @@ from .models import Follower
 from src.profiles.serializers import UserByFollowerSerializer
 
 
-
 class ListFollowerSerializer(serializers.ModelSerializer):
     subscriber = UserByFollowerSerializer(many=True, read_only=True)
 

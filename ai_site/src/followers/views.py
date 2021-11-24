@@ -9,7 +9,7 @@ from rest_framework import generics, permissions, views, response
 class ListFollowerView(generics.ListAPIView):
     """output list of subscribers"""
 
-    permissions_classes = [permissions.IsAuthenticated]
+    permissions_classes = (permissions.IsAuthenticated,)
 
     serializer_class = ListFollowerSerializer
 
@@ -18,7 +18,7 @@ class ListFollowerView(generics.ListAPIView):
 
 
 class FollowerView(views.APIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = (permissions.IsAuthenticated,)
 
     def post(self, request, pk):
 

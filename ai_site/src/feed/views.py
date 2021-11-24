@@ -6,7 +6,7 @@ from .services import feed_service
 
 
 class FeedView(viewsets.GenericViewSet):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = (permissions.IsAuthenticated,)
     serializer_class = ListPostSerializer
 
     def list(self, request, *args, **kwargs):

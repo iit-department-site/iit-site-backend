@@ -18,7 +18,7 @@ class PostListView(generics.ListAPIView):
 
 class PostView(CreateRetrieveUpdateDestroy):
     """CRUD post"""
-    permissions_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permissions_classes = (permissions.IsAuthenticatedOrReadOnly,)
     queryset = Post.objects.all().select_related('user').prefetch_related('comments')
     serializer_class = PostSerilizer
 
@@ -36,7 +36,7 @@ class PostView(CreateRetrieveUpdateDestroy):
 
 class CommentsView(CreateUpdateDestroy):
     """Put comments to post"""
-    permissions_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permissions_classes = (permissions.IsAuthenticatedOrReadOnly,)
     queryset = Comment.objects.all()
     serializer_class = CreateCommentSerializers
 
