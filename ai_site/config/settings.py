@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-a5$d^-j6#1w$ffnfp-)#ary%(3-%)t6ih7l_$=-1+trgg(9o=q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -177,6 +177,8 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
+
+CORS_ALLOW_ALL_ORIGINS=True
 
 AUTH_USER_MODEL = 'profiles.UserNet'
 
