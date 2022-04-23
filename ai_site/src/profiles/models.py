@@ -8,7 +8,7 @@ from src.core.enums.profiles import Gender
 class UserNet(AbstractUser):
     """Custom user model"""
 
-    middle_name = models.CharField(max_length=50)
+    middle_name = models.CharField(max_length=50, blank=True)
     first_login = models.DateTimeField(null=True)
     phone = models.CharField(
         max_length=40,
