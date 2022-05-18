@@ -34,6 +34,28 @@ Open in your browser
 http://localhost:8008
 ```
 
+### Makefile commands
+Build docker containers by using docker-compose
+```
+make build
+```
+Up docker containers
+```
+make up
+```
+Stop docker containers
+```
+make down
+```
+Restart docker containers
+```
+make restart
+```
+Clone master branch from github
+```
+make clone_platform
+```
+
 ## Usage <a name = "usage"></a>
 
 Add notes about how to use the system:
