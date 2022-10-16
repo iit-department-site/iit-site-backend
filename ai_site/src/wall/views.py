@@ -7,7 +7,9 @@ from .serializers import CreateCommentSerializers, PostSerilizer, ListPostSerial
 
 
 class PostListView(generics.ListAPIView):
-    """Post list of user"""
+    """
+    endpoint which return list of Post model
+    """
 
     serializer_class = ListPostSerializer
 
@@ -17,7 +19,9 @@ class PostListView(generics.ListAPIView):
 
 
 class PostView(CreateRetrieveUpdateDestroy):
-    """CRUD post"""
+    """
+    CRUD methods for Post model
+    """
     permissions_classes = (permissions.IsAuthenticatedOrReadOnly,)
     queryset = Post.objects.all().select_related('user').prefetch_related('comments')
     serializer_class = PostSerilizer
@@ -35,7 +39,9 @@ class PostView(CreateRetrieveUpdateDestroy):
 
 
 class CommentsView(CreateUpdateDestroy):
-    """Put comments to post"""
+    """
+    Create, Update, Delete methods for Comment model
+    """
     permissions_classes = (permissions.IsAuthenticatedOrReadOnly,)
     queryset = Comment.objects.all()
     serializer_class = CreateCommentSerializers
