@@ -14,14 +14,17 @@ class UserNetList(ListAPIView):
 
 
 class UserNetPublicView(ModelViewSet):
-    """out public user profile """
+    """
+    CRUD methods for UserNetPublic Model
+    """
     queryset = UserNet.objects.all()
     serializer_class = GetUserNetPublicSerializer
     permission_classes = (permissions.AllowAny,)
     
     
 class UserNetView(ModelViewSet):
-    """ out private public user profile 
+    """
+    CRUD methods for UserNet model
     """
     serializer_class = GetUserNetSerializer
     permission_classes = (permissions.IsAuthenticated,)
