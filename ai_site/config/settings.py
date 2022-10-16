@@ -44,11 +44,11 @@ INSTALLED_APPS = [
     'corsheaders',
     'mptt',
     
-    'src.profiles',
-    'src.wall',
-    'src.comment',
-    'src.followers',
-    'src.feed',
+    'src.profiles.apps.ProfilesConfig',
+    'src.wall.apps.WallConfig',
+    'src.comment.apps.CommentConfig',
+    'src.followers.apps.FollowersConfig',
+    'src.feed.apps.FeedConfig',
     
 ]
 
@@ -143,6 +143,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    'PAGE_SIZE': 25,
 }
 DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': '#/password/reset/confirm/{uid}/{token}',

@@ -4,6 +4,7 @@ from base.classes import CreateUpdateDestroy, CreateRetrieveUpdateDestroy
 from base.permissions import IsAuthor, IsMemberGroup, IsAuthorEntry, IsAuthorCommentEntry
 from .models import Post, Comment
 from .serializers import CreateCommentSerializers, PostSerilizer, ListPostSerializer
+from rest_framework.pagination import PageNumberPagination
 
 
 class PostListView(generics.ListAPIView):
@@ -12,6 +13,7 @@ class PostListView(generics.ListAPIView):
     """
 
     serializer_class = ListPostSerializer
+    pagination_class = PageNumberPagination
 
     def get_queryset(self):
         return Post.objects.filter(
@@ -23,6 +25,7 @@ class PostView(CreateRetrieveUpdateDestroy):
     CRUD methods for Post model
     """
     permissions_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    pagination_class = PageNumberPagination
     queryset = Post.objects.all().select_related('user').prefetch_related('comments')
     serializer_class = PostSerilizer
 
@@ -44,6 +47,7 @@ class CommentsView(CreateUpdateDestroy):
     """
     permissions_classes = (permissions.IsAuthenticatedOrReadOnly,)
     queryset = Comment.objects.all()
+    pagination_class = PageNumberPagination
     serializer_class = CreateCommentSerializers
 
     permission_classes_by_action = {'update': [IsAuthor],

@@ -1,7 +1,16 @@
 from rest_framework import permissions
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.generics import ListAPIView
 from .models import UserNet
 from .serializers import GetUserNetSerializer, GetUserNetPublicSerializer
+from rest_framework.pagination import PageNumberPagination
+
+
+class UserNetList(ListAPIView):
+    queryset = UserNet.objects.all()
+    pagination_class = PageNumberPagination
+    serializer_class = GetUserNetPublicSerializer
+    permissions = (permissions.AllowAny, )
 
 
 class UserNetPublicView(ModelViewSet):
