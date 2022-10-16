@@ -14,20 +14,11 @@ class ListFollowerView(generics.ListAPIView):
     serializer_class = ListFollowerSerializer
 
     def get_queryset(self):
-        return Follower.objects.filter(user=self.request.user)
+        return Follower.objects.filter(user=self.request.user.id)
 
 
-class FollowerView(views.APIView):
+class UnsubscribeFollowerView(views.APIView):
     permission_classes = (permissions.IsAuthenticated,)
-
-    def post(self, request, pk):
-
-        user = UserNet.objects.filter(id=pk)
-        if user.exists():
-            """проверка на подписку"""
-            Follower.objects.create(subscriber=request.user, user=user)
-            return response.Response(status=201)
-        return response.Response(status=404)
 
     def delete(self, request, pk):
         try:
@@ -38,3 +29,16 @@ class FollowerView(views.APIView):
 
         sub.delete()
         return response.Response(status=204)
+
+
+class SubscribeFollowerView(views.APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def post(self, request, pk):
+        user = UserNet.objects.filter(id=pk)
+        if user.exists():
+            """проверка на подписку"""
+            Follower.objects.create(subscriber=request.user, user=user)
+            return response.Response(status=201)
+        return response.Response(status=404)
+
