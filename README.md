@@ -30,7 +30,7 @@ docker-compose exec web python manage.py migrate --noinput
 ```
 Open in your browser
 ```
-http://localhost:8008
+localhost
 ```
 
 ## Usage <a name = "usage"></a>
@@ -39,3 +39,6 @@ Add notes about how to use the system:
 * Django
 * Docker
 * Postgres
+
+### NGINX
+if you want change name from "localhost" to another you should change config in nginx dir
