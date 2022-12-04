@@ -48,9 +48,11 @@ class UserAvatarView(GenericViewSet):
 
     @action(detail=False, methods=["put", "post"])
     def upload_avatar(self, request, pk):
-        instance = self.queryset.get(pk=pk)
-        serializer = self.serializer_class(instance, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            instance = self.queryset.get(pk=pk)
+            serializer = self.serializer_class(instance, data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+        except Exception:
+            return Response("user not found", status=status.HTTP_404_NOT_FOUND)
