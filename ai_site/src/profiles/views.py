@@ -46,29 +46,11 @@ class UserAvatarView(GenericViewSet):
         serialized_data = self.serializer_class(instance)
         return Response(serialized_data.data)
 
-    # def post(self, request, format=None):
-    #     serializer = PhotoSerializer(data=request.DATA)
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return Response(serializer.data, status=status.HTTP_201_CREATED)
-    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    # def put(self, request, pk, format=None):
-    #     photo = self.get_object(pk)
-    #     serializer = PhotoSerializer(photo, data=request.DATA)
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return Response(serializer.data)
-    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    @action(detail=False, methods=["put"])
+    @action(detail=False, methods=["put", "post"])
     def upload_avatar(self, request, pk):
-        instances = self.queryset.filter(pk=pk)
-
-        instances.update(avatar=request.FILES.get("avatar"))
-        # print(request)
-        # print('ADADSASD')
-        # #serialized_data = self.serializer_class(data=request.data)
-        # print(serialized_data)
-        return Response(status=status.HTTP_200_OK)
-
+        instance = self.queryset.get(pk=pk)
+        serializer = self.serializer_class(instance, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
