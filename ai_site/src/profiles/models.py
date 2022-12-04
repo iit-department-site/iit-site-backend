@@ -9,7 +9,7 @@ class UserNet(AbstractUser):
     """Custom user model"""
 
     middle_name = models.CharField(max_length=50, blank=True)
-    first_login = models.DateTimeField(null=True)
+    first_login = models.DateTimeField(auto_now_add=True)
     phone = models.CharField(
         max_length=40,
         validators=(
@@ -25,7 +25,7 @@ class UserNet(AbstractUser):
         ))
     birthday = models.DateField(blank=True, null=True)
     gender = models.CharField(choices=Gender.choices(), default="MALE", max_length=7)
-    technology = models.ManyToManyField('Technology', related_name='user')
+    technology = models.ManyToManyField('Technology', related_name='user', blank=True)
 
 
 class Technology(models.Model):

@@ -13,12 +13,23 @@ class GetUserNetSerializer(serializers.ModelSerializer):
         exclude = (
             "password",
             "last_login",
+            "first_login",
             "is_active",
             "is_staff",
             "is_superuser",
             "groups",
             "user_permissions"
         )
+
+
+class UserAvatarSerializer(serializers.ModelSerializer):
+    """Output info about user
+    """
+    avatar = serializers.ImageField()
+
+    class Meta:
+        model = UserNet
+        fields = ('avatar',)
 
 
 class GetUserNetPublicSerializer(serializers.ModelSerializer):
