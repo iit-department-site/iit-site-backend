@@ -9,12 +9,9 @@ class UserNet(AbstractUser):
     """Custom user model"""
 
     middle_name = models.CharField(max_length=50, blank=True)
-    first_login = models.DateTimeField(auto_now_add=True)
+    first_login = models.DateTimeField(auto_now_add=True, null=True)
     phone = models.CharField(
         max_length=40,
-        validators=(
-            RegexValidator(regex="^\+375(17|29|33|44)[0-9]{3}[0-9]{2}[0-9]{2}$"),
-        )
     )
     avatar = models.ImageField(upload_to='user/avatar/', blank=True, null=True)
     bio = models.TextField(blank=True, null=True)
@@ -31,6 +28,7 @@ class UserNet(AbstractUser):
 class Technology(models.Model):
     """Technology model"""
     name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='technology/', blank=True, null=True)
 
     def __str__(self):
         return self.name

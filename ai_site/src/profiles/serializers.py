@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import UserNet
+from .models import UserNet, Technology
 
 
 class GetUserNetSerializer(serializers.ModelSerializer):
@@ -46,7 +46,8 @@ class GetUserNetPublicSerializer(serializers.ModelSerializer):
             "is_staff",
             "is_superuser",
             "groups",
-            "user_permissions"
+            "user_permissions",
+            "first_login",
         )
 
 
@@ -59,3 +60,19 @@ class UserByFollowerSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserNet
         fields = ('id', 'username', 'avatar')
+
+
+class TechnologySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Technology
+        fields = "__all__"
+
+
+class TechnologyImageSerializer(serializers.ModelSerializer):
+    """Output info about user
+    """
+    image = serializers.ImageField()
+
+    class Meta:
+        model = Technology
+        fields = ('image',)
