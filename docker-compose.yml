@@ -15,7 +15,7 @@ services:
       - db
 
   nginx:
-    build: ./nginx
+    build: ./nginx/iit-site-frontend
     container_name: nginx
     volumes:
       - ./ai_site:/ai_site
