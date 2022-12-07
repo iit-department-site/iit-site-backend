@@ -1,4 +1,4 @@
 [submodule "nginx/iit-site-frontend"]
 	path = nginx/iit-site-frontend
 	url = https://github.com/iit-department-site/iit-site-frontend
-	branch = main
+	branch = devops
