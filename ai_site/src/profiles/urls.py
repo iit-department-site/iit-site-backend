@@ -9,6 +9,7 @@ urlpatterns = [
         {'post': 'upload_avatar', 'put': 'upload_avatar', 'get': 'get_avatar'}
     )),
     path('technology/<int:pk>', views.TechnologyViewSet.as_view({'get': 'retrieve'})),
+    path('technology/list', views.TechnologyViewSet.as_view({'get': 'list'})),
     path('technology/update/<int:pk>', views.TechnologyViewSet.as_view({'put': 'update'})),
     path('technology/create', views.TechnologyViewSet.as_view({'post': 'create'})),
     path('technology/<int:pk>/image', views.TechnologyImageViewSet.as_view(
