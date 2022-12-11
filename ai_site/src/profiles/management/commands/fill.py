@@ -22,12 +22,13 @@ class Command(BaseCommand):
 
     def __create_super_user(self, username=None):
         logger.info("start creating new admin profile")
+        password = os.environ["ADMIN_SUPER_USER_PASSWORD"]
         user = self.__user_class(
             is_staff=True,
             is_active=True,
             is_superuser=True,
             username=username
         )
-        user.set_password("ADMIN_SUPER_USER_PASSWORD")
+        user.set_password(password)
         user.save()
         logger.info("admin was created")
