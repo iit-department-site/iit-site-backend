@@ -29,6 +29,7 @@ class Technology(models.Model):
     """Technology model"""
     name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='technology/', blank=True, null=True)
+    type = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
